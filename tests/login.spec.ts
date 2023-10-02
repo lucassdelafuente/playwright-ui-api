@@ -9,7 +9,7 @@ test.beforeEach(async ({page}) => {
 })
 
 test.describe('Login', () =>{
-    test('Login with valid credentials', async () => {
+    test('Login with valid credentials @login', async () => {
         const expectedMessage: RegExp = /You logged into a secure area!/;
         const username: string = 'tomsmith';
         const password: string = 'SuperSecretPassword!';
@@ -17,7 +17,7 @@ test.describe('Login', () =>{
         await expect(loginPage.flashMessage).toHaveText(expectedMessage);
     })
 
-    test('Login with invalid credentials', async () => {
+    test('Login with invalid credentials @login', async () => {
         const expectedMessage: RegExp = /Your password is invalid!/;
         const username: string = 'tomsmith';
         const password: string = 'SuperSecretPassword!!';
@@ -25,7 +25,7 @@ test.describe('Login', () =>{
         await expect(loginPage.flashMessage).toHaveText(expectedMessage);
     })
 
-    test('Login with invalid username', async () => {
+    test('Login with invalid username @login', async () => {
         const expectedMessage: RegExp = /Your username is invalid!/;
         const username: string = 'tomsmithss';
         const password: string = 'SuperSecretPassword!!';

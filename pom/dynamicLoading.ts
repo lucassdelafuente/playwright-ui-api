@@ -1,6 +1,6 @@
 import { Page, Locator } from '@playwright/test';
 
-class DynamicLoadingPage{
+export class DynamicLoadingPage{
     readonly page: Page;
     readonly startBtn: Locator;
     readonly loadingBar: Locator;
@@ -25,5 +25,3 @@ class DynamicLoadingPage{
         await this.startBtn.click();
     }
 }
-
-export default DynamicLoadingPage;

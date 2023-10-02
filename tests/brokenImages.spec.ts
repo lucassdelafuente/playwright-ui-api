@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { BrokenImagesPage } from '../pom/brokenImagesPage';
+import { BrokenImagesPage } from '../pom/brokenImagesPage.js';
 
 let brokenImages: BrokenImagesPage;
 

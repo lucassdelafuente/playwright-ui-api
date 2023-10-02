@@ -44,7 +44,7 @@ export class DynamicControlPage{
     }
 
     async isInputEnabled(): Promise<boolean>{
-        const attribute = await this.inputTxt.getAttribute('disabled');
+        const attribute: string | null = await this.inputTxt.getAttribute('disabled');
         return attribute === null;
     }
     

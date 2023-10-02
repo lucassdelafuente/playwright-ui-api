@@ -1,4 +1,4 @@
-import {Page, expect, test} from '@playwright/test'
+import { expect, test } from '@playwright/test'
 import { CheckBoxesPage } from '../pom/checkBoxesPage';
 
 let checkBoxesPage: CheckBoxesPage
