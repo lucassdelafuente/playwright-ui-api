@@ -12,7 +12,7 @@ npm install
 npm i -D @playwright/test
 ```
 
-### Usage
+## Usage
 
 UI execution:
 
