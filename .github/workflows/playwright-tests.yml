@@ -40,6 +40,12 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install
 
+      - name: Debug file structure
+        run: ls -R
+
+      - name: Show TypeScript config
+        run: cat tsconfig.json
+
       - name: Run Playwright Tests
         run: npm run desktop-chromium
 
