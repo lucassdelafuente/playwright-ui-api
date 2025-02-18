@@ -12,7 +12,7 @@ on:
       browser:
         description: 'Browser and device to test'
         required: true
-        default: 'chromium-desktop'
+        default: 'desktop-chromium'
         type: choice
         options:
           - desktop-chromium
@@ -22,7 +22,7 @@ on:
 
 jobs:
   test:
-    name: Run Playwright Tests - ${{ inputs.browser || 'chromium-desktop' }}
+    name: Run Playwright Tests - ${{ inputs.browser || 'desktop-chromium' }}
     runs-on: ubuntu-latest
 
     steps:

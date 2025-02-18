@@ -18,7 +18,7 @@
     "typescript": "^5.0.2"
   },
   "scripts": {
-    "desktop-chromium": "npx playwright test --project=chromium-desktop",
+    "desktop-chromium": "npx playwright test --project=desktop-chromium",
     "desktop-webkit": "npx playwright test --project=webkit-desktop",
     "mobile-chromium": "npx playwright test --project=chromium-mobile",
     "mobile-webkit": "npx playwright test --project=webkit-mobile",
