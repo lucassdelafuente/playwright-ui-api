@@ -18,10 +18,10 @@
     "typescript": "^5.0.2"
   },
   "scripts": {
-    "desktop-chromium": "npx playwright test --project=desktop-chromium",
-    "desktop-webkit": "npx playwright test --project=webkit-desktop",
-    "mobile-chromium": "npx playwright test --project=chromium-mobile",
-    "mobile-webkit": "npx playwright test --project=webkit-mobile",
+    "desktop-chromium": "npx playwright test --project=desktop-chromium --config=playwright.config.ts",
+    "desktop-webkit": "npx playwright test --project=webkit-desktop --config=playwright.config.ts",
+    "mobile-chromium": "npx playwright test --project=chromium-mobile --config=playwright.config.ts",
+    "mobile-webkit": "npx playwright test --project=webkit-mobile --config=playwright.config.ts",
     "format": "prettier --write .",
     "lint": "eslint --fix . --ext .ts,.tsx"
   },
