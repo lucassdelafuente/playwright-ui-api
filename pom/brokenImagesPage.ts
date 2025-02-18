@@ -10,7 +10,7 @@ export class BrokenImagesPage {
   }
 
   async goToBrokenImage(): Promise<void> {
-    await this.page.goto('https://the-internet.herokuapp.com/broken_images');
+    await this.page.goto('/broken_images');
   }
 
   async getImages(): Promise<string[]> {

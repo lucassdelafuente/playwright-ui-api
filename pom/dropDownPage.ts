@@ -12,7 +12,7 @@ export class DropDownPage {
   }
 
   async goToDropDownPage(): Promise<void> {
-    await this.page.goto('https://the-internet.herokuapp.com/dropdown');
+    await this.page.goto('/dropdown');
   }
 
   async selectOption(option: string): Promise<void> {

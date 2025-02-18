@@ -14,15 +14,11 @@ export class DynamicLoadingPage {
   }
 
   async goToExample1(): Promise<void> {
-    await this.page.goto(
-      'https://the-internet.herokuapp.com/dynamic_loading/1'
-    );
+    await this.page.goto('/dynamic_loading/1');
   }
 
   async goToExample2(): Promise<void> {
-    await this.page.goto(
-      'https://the-internet.herokuapp.com/dynamic_loading/2'
-    );
+    await this.page.goto('/dynamic_loading/2');
   }
 
   async startLoad(): Promise<void> {

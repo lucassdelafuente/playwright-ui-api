@@ -18,7 +18,12 @@
     "typescript": "^5.0.2"
   },
   "scripts": {
-    "prepare": "husky install"
+    "desktop-chromium": "npx playwright test --project=chromium-desktop",
+    "desktop-webkit": "npx playwright test --project=webkit-desktop",
+    "mobile-chromium": "npx playwright test --project=chromium-mobile",
+    "mobile-webkit": "npx playwright test --project=webkit-mobile",
+    "format": "prettier --write .",
+    "lint": "eslint --fix . --ext .ts,.tsx"
   },
   "dependencies": {
     "@typescript-eslint/parser": "^8.24.0",

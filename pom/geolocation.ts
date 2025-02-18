@@ -16,7 +16,7 @@ export class GeolocationPage {
   }
 
   async goToGeolocationPage(): Promise<void> {
-    await this.page.goto('https://the-internet.herokuapp.com/geolocation');
+    await this.page.goto('/geolocation');
   }
 
   async getMyLocation(): Promise<void> {

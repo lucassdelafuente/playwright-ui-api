@@ -8,6 +8,6 @@ export class MainPage {
   }
 
   async goToHomePage(): Promise<void> {
-    await this.page.goto('https://the-internet.herokuapp.com/');
+    await this.page.goto('/');
   }
 }

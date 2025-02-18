@@ -24,7 +24,7 @@ export class DynamicControlPage {
   }
 
   async goToDynamicControlPage(): Promise<void> {
-    await this.page.goto('https://the-internet.herokuapp.com/dynamic_controls');
+    await this.page.goto('/dynamic_controls');
   }
 
   // Add-Remove
