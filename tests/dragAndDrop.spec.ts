@@ -1,19 +1,20 @@
-import { test, expect} from '@playwright/test'
-import { DragAndDropPage } from '../pom/dragAndDropPage'
+import { test, expect } from '@playwright/test';
+import { DragAndDropPage } from '@pom/dragAndDropPage';
 
-let dragAndDropPage: DragAndDropPage
+test.describe('Drag and Drop', () => {
+  let dragAndDropPage: DragAndDropPage;
+  const expectedResultA = 'A';
+  const expectedResultB = 'B';
 
-test.beforeEach(async ({page}) => {
-    dragAndDropPage = new DragAndDropPage(page)
-    await dragAndDropPage.goToDragAndDropPage()
-})
+  test.beforeEach(async ({ page }) => {
+    dragAndDropPage = new DragAndDropPage(page);
+    await dragAndDropPage.goToDragAndDropPage();
+  });
 
-test.describe('Drag and Drop', () =>{
+  test('Box A should be moved to box B', async () => {
+    await dragAndDropPage.dragAndDrop();
 
-    test('Box A should be moved to box B', async () => {
-        await dragAndDropPage.dragAndDrop();
-        expect(await dragAndDropPage.getBoxAText()).toBe('B');
-        expect(await dragAndDropPage.getBoxBText()).toBe('A');
-    })
-
-})
+    await expect(dragAndDropPage.boxA).toHaveText(expectedResultB);
+    await expect(dragAndDropPage.boxB).toHaveText(expectedResultA);
+  });
+});

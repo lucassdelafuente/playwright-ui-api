@@ -1,34 +1,28 @@
-import { expect, test } from '@playwright/test'
-import { CheckBoxesPage } from '../pom/checkBoxesPage';
-
-let checkBoxesPage: CheckBoxesPage
-
-test.beforeEach(async ({page}) => {
-    checkBoxesPage = new CheckBoxesPage(page);
-    await checkBoxesPage.goToCheckBoxesPage()
-})
+import { expect, test } from '@playwright/test';
+import { CheckBoxesPage } from '@pom/checkBoxesPage';
 
 test.describe('Check boxes', () => {
+  let checkBoxesPage: CheckBoxesPage;
 
-    test('Second check boxes should be checked by default', async () => {
-        const actualResult = await checkBoxesPage.isCheckBoxChecked('checkbox 2');
+  test.beforeEach(async ({ page }) => {
+    checkBoxesPage = new CheckBoxesPage(page);
+    await checkBoxesPage.goToCheckBoxesPage();
+  });
 
-        expect(actualResult).toBe(true);
-    })
+  test('Second check boxes should be checked by default', async () => {
+    await expect(checkBoxesPage.checkBoxes.last()).toBeChecked();
+  });
 
-    test('First check boxes should not be checked by default', async () => {
-        const actualResult = await checkBoxesPage.isCheckBoxChecked('checkbox 1');
+  test('First check boxes should not be checked by default', async () => {
+    await expect(checkBoxesPage.checkBoxes.first()).toBeChecked({
+      checked: false,
+    });
+  });
 
-        expect(actualResult).toBe(false);
-    })
+  test('Both check boxes should be checked', async () => {
+    await checkBoxesPage.clickOnCheckbox('checkbox 1');
 
-    test('Both check boxes should be checked', async () => {
-        await checkBoxesPage.clickOnCheckbox('checkbox 1');
-        const resultCheck1 = await checkBoxesPage.isCheckBoxChecked('checkbox 1');
-        const resultCheck2 = await checkBoxesPage.isCheckBoxChecked('checkbox 2');
-
-        expect(resultCheck1).toBe(true);
-        expect(resultCheck2).toBe(true);
-    })
-
+    await expect(checkBoxesPage.checkBoxes.first()).toBeChecked();
+    await expect(checkBoxesPage.checkBoxes.last()).toBeChecked();
+  });
 });

@@ -1,22 +1,25 @@
-import { test, expect} from '@playwright/test'
-import { DropDownPage } from '../pom/dropDownPage'
+import { test, expect } from '@playwright/test';
+import { DropDownPage } from '@pom/dropDownPage';
 
-let dropDown: DropDownPage
+test.describe('Drop Down', () => {
+  let dropDown: DropDownPage;
 
-test.beforeEach(async ({page}) => {
-    dropDown = new DropDownPage(page)
-    await dropDown.goToDropDownPage()
-})
+  test.beforeEach(async ({ page }) => {
+    dropDown = new DropDownPage(page);
+    await dropDown.goToDropDownPage();
+  });
 
-test.describe('Drop Down', () =>{
+  // It's not possible to use toHaveText() because the locator doesn't change the text
+  test('"Please select an option" should be selected by default', async () => {
+    const expectedOption: string = 'Please select an option';
 
-    test('"Please select an option" should be selected by default', async () => {
-        const expectedOption: string = 'Please select an option'
-        expect(await dropDown.getSelectedOption()).toBe(expectedOption);
-    })
-    test('Option 2 should be selected', async () => {
-        const expectedOption: string = 'Option 2'
-        await dropDown.selectOption(expectedOption);
-        expect(await dropDown.getSelectedOption()).toBe(expectedOption);
-    })
-})
+    expect(await dropDown.getSelectedOption()).toBe(expectedOption);
+  });
+
+  test('Option 2 should be selected', async () => {
+    const expectedOption: string = 'Option 2';
+    await dropDown.selectOption(expectedOption);
+
+    expect(await dropDown.getSelectedOption()).toBe(expectedOption);
+  });
+});

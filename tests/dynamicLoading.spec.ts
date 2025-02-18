@@ -1,27 +1,26 @@
-import { test, expect} from '@playwright/test';
-import { DynamicLoadingPage } from '../pom/dynamicLoading.js';
-
-let dynamicLoadingPage: DynamicLoadingPage
-
-test.beforeEach(async ({page}) => {
-    dynamicLoadingPage = new DynamicLoadingPage(page);
-});
-
+import { test, expect } from '@playwright/test';
+import { DynamicLoadingPage } from '@pom/dynamicLoading.js';
 
 test.describe('Dynamic Loading', () => {
+  let dynamicLoadingPage: DynamicLoadingPage;
 
-    test('Hello world text should then visible on Example 1 page', async () => {
-        await dynamicLoadingPage.goToExample1();
-        await dynamicLoadingPage.startLoad();
-        await dynamicLoadingPage.loadingBar.waitFor({ state: 'hidden' });
-        await expect(dynamicLoadingPage.helloWorldTxt).toBeVisible();
-    })
+  test.beforeEach(async ({ page }) => {
+    dynamicLoadingPage = new DynamicLoadingPage(page);
+  });
 
-    test('Hello world text should then visible on Example 2 page', async () => {
-        await dynamicLoadingPage.goToExample2();
-        await dynamicLoadingPage.startLoad();
-        await dynamicLoadingPage.loadingBar.waitFor({ state: 'hidden' });
-        await expect(dynamicLoadingPage.helloWorldTxt).toBeVisible();
-    })
+  test('Hello world text should then visible on Example 1 page', async () => {
+    await dynamicLoadingPage.goToExample1();
+    await dynamicLoadingPage.startLoad();
+    await dynamicLoadingPage.loadingBar.waitFor({ state: 'hidden' });
 
+    await expect(dynamicLoadingPage.helloWorldTxt).toBeVisible();
+  });
+
+  test('Hello world text should then visible on Example 2 page', async () => {
+    await dynamicLoadingPage.goToExample2();
+    await dynamicLoadingPage.startLoad();
+    await dynamicLoadingPage.loadingBar.waitFor({ state: 'hidden' });
+
+    await expect(dynamicLoadingPage.helloWorldTxt).toBeVisible();
+  });
 });
