@@ -10,6 +10,6 @@ export class EntryAdPage {
   }
 
   async goToEntryAdPage(): Promise<void> {
-    await this.page.goto('https://the-internet.herokuapp.com/entry_ad');
+    await this.page.goto('/entry_ad');
   }
 }

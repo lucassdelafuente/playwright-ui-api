@@ -10,7 +10,7 @@ export class CheckBoxesPage {
   }
 
   async goToCheckBoxesPage(): Promise<void> {
-    await this.page.goto('https://the-internet.herokuapp.com/checkboxes');
+    await this.page.goto('/checkboxes');
   }
 
   async clickOnCheckbox(checkbox: 'checkbox 1' | 'checkbox 2'): Promise<void> {

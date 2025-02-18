@@ -10,7 +10,7 @@ export class DownloadPage {
   }
 
   async goToDownloadPage(): Promise<void> {
-    await this.page.goto('https://the-internet.herokuapp.com/download');
+    await this.page.goto('/download');
   }
 
   async downloadFile(fileName: string): Promise<Download> {

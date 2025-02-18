@@ -12,7 +12,7 @@ export class DragAndDropPage {
   }
 
   async goToDragAndDropPage(): Promise<void> {
-    await this.page.goto('https://the-internet.herokuapp.com/drag_and_drop');
+    await this.page.goto('/drag_and_drop');
   }
 
   // This is one option to drag and drop, but if we wold have more than 2 boxes, we would have to pass the boxes as parameters

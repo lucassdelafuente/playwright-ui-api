@@ -1,0 +1,62 @@
+name: Playwright Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: 'Browser and device to test'
+        required: true
+        default: 'chromium-desktop'
+        type: choice
+        options:
+          - desktop-chromium
+          - mobile-chromium
+          - desktop-webkit
+          - mobile-webkit
+
+jobs:
+  test:
+    name: Run Playwright Tests - ${{ inputs.browser || 'chromium-desktop' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright Tests
+        run: |
+          case "${{ inputs.browser }}" in
+            mobile-chromium)
+              npm run mobile-chromium
+              ;;
+            desktop-webkit)
+              npm run desktop-webkit
+              ;;
+            mobile-webkit)
+              npm run mobile-webkit
+              ;;
+            *)
+              npm run desktop-chromium
+              ;;
+          esac
+
+      - name: Upload Playwright Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-${{ inputs.browser || 'desktop-chromium' }}
+          path: playwright-report/
