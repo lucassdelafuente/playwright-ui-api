@@ -40,14 +40,22 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install
 
-      - name: Debug file structure
-        run: ls -R
-
-      - name: Show TypeScript config
-        run: cat tsconfig.json
-
       - name: Run Playwright Tests
-        run: npm run desktop-chromium
+        run: |
+          case "${{ inputs.browser }}" in
+            mobile-chromium)
+              npm run mobile-chromium
+              ;;
+            desktop-webkit)
+              npm run desktop-webkit
+              ;;
+            mobile-webkit)
+              npm run mobile-webkit
+              ;;
+            *)
+              npm run desktop-chromium
+              ;;
+          esac
 
       - name: Upload Playwright Report
         if: always()
