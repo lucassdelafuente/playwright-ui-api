@@ -1,18 +1,16 @@
-import { expect, test } from '@playwright/test';
-import { EntryAdPage } from '@pom/entryAdPage.js';
+import { expect, test } from '@fixtures/fixturesBuilder';
 
-test.describe('Entry ad option', () => {
-  let entryAd: EntryAdPage;
-
-  test.beforeEach(async ({ page }) => {
-    entryAd = new EntryAdPage(page);
-    await entryAd.goToEntryAdPage();
+test.describe('Entry ad option feature', () => {
+  test.beforeEach(async ({ entryAdPage }) => {
+    await entryAdPage.goToEntryAdPage();
   });
 
-  test('The Modal title should be "This is a modal window"', async () => {
+  test('The Modal title should be "This is a modal window"', async ({
+    entryAdPage,
+  }) => {
     const expectedText: string = 'This is a modal window';
 
-    await expect(entryAd.modalTitle).toContainText(expectedText, {
+    await expect(entryAdPage.modalTitle).toContainText(expectedText, {
       ignoreCase: true,
     });
   });
