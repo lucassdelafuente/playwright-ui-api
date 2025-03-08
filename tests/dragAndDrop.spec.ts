@@ -1,17 +1,14 @@
-import { test, expect } from '@playwright/test';
-import { DragAndDropPage } from '@pom/dragAndDropPage';
+import { test, expect } from '@fixtures/fixturesBuilder';
 
-test.describe('Drag and Drop', () => {
-  let dragAndDropPage: DragAndDropPage;
+test.describe('Drag and Drop feature', () => {
   const expectedResultA = 'A';
   const expectedResultB = 'B';
 
-  test.beforeEach(async ({ page }) => {
-    dragAndDropPage = new DragAndDropPage(page);
+  test.beforeEach(async ({ dragAndDropPage }) => {
     await dragAndDropPage.goToDragAndDropPage();
   });
 
-  test('Box A should be moved to box B', async () => {
+  test('Box A should be moved to box B', async ({ dragAndDropPage }) => {
     await dragAndDropPage.dragAndDrop();
 
     await expect(dragAndDropPage.boxA).toHaveText(expectedResultB);

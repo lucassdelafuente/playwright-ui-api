@@ -1,6 +1,6 @@
 import { expect, test } from '@fixtures/fixturesBuilder';
 
-test.describe('Check boxes', () => {
+test.describe('Check boxes feature', () => {
   test.beforeEach(async ({ checkBoxesPage }) => {
     await checkBoxesPage.goToCheckBoxesPage();
   });

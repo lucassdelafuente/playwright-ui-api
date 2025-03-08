@@ -1,6 +1,6 @@
 import { test, expect } from '@fixtures/fixturesBuilder';
 
-test.describe('Broken Images', () => {
+test.describe('Broken Images feature', () => {
   test.beforeEach(async ({ brokenImagesPage }) => {
     await brokenImagesPage.goToBrokenImage();
   });
