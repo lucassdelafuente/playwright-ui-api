@@ -5,6 +5,7 @@
       "*": ["node_modules/*"],
       "@pom/*": ["pom/*"],
       "@fixtures/*": ["fixtures/*"],
+      "@endpoints/*": ["endpoints/*"],
       "@playwright.config": ["playwright.config.ts"]
     },
     "typeRoots": ["./node_modules/@types", "./@types"],
@@ -30,7 +31,7 @@
     "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
 
     /* Type Checking */
-    "strict": false /* Enable all strict type-checking options. */,
+    "strict": true /* Enable all strict type-checking options. */,
     "noImplicitAny": false /* Enable error reporting for expressions and declarations with an implied 'any' type. */,
     "strictNullChecks": false /* When type checking, take into account 'null' and 'undefined'. */,
     "strictFunctionTypes": true /* When assigning functions, check to ensure parameters and the return values are subtype-compatible. */,

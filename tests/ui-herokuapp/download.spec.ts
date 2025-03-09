@@ -1,4 +1,5 @@
-import { test, expect } from '@fixtures/fixturesBuilder';
+import { test } from '@fixtures/fixturesBuilder';
+import { expect } from '@playwright/test';
 
 test.describe('Download feature feature', () => {
   test.beforeEach(async ({ downloadPage }) => {

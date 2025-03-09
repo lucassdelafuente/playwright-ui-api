@@ -1,4 +1,5 @@
-import { expect, test } from '@fixtures/fixturesBuilder';
+import { test } from '@fixtures/fixturesBuilder';
+import { expect } from '@playwright/test';
 
 test.describe('Check boxes feature', () => {
   test.beforeEach(async ({ checkBoxesPage }) => {

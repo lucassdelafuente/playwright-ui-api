@@ -1,4 +1,5 @@
-import { test, expect } from '@fixtures/fixturesBuilder';
+import { test } from '@fixtures/fixturesBuilder';
+import { expect } from '@playwright/test';
 
 test.describe('Dynamic Loading feature', () => {
   test('Hello world text should be visible on Example 1 page', async ({
