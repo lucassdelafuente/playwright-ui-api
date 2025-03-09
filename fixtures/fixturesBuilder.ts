@@ -85,5 +85,3 @@ export const test = base.extend<MyFixtures>({
     await use(mainPage);
   },
 });
-
-export { expect } from '@playwright/test';
