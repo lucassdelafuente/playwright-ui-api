@@ -34,7 +34,7 @@ export class BrokenImagesPage {
       src.map(async (s) => {
         try {
           const request = await this.page.request.get(
-            `https://the-internet.herokuapp.com/${s}`
+            `/${s}`
           );
 
           return request.status();
