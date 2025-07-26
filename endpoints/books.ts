@@ -1,16 +1,5 @@
+import { Booking } from '@types/books';
 import { APIRequestContext, APIResponse } from 'playwright';
-
-interface Book {
-  firstname: string;
-  lastname: string;
-  totalprice: number;
-  depositpaid: boolean;
-  bookingdates: {
-    checkin: string;
-    checkout: string;
-  };
-  additionalneeds: string;
-}
 
 export async function getBookingIds(
   apiContext: APIRequestContext
@@ -22,9 +11,9 @@ export async function getBookingIds(
   return response;
 }
 
-export async function getBooks(
+export async function getBooking(
   apiContext: APIRequestContext,
-  bookId: string
+  bookId: number
 ): Promise<APIResponse> {
   const response = apiContext.get(
     `https://restful-booker.herokuapp.com/booking/${bookId}`
@@ -33,67 +22,76 @@ export async function getBooks(
   return response;
 }
 
-export async function createBook(
+export async function createBooking(
   apiContext: APIRequestContext,
   tokenValue: string,
-  payload: Book
+  payload: Booking
 ): Promise<APIResponse> {
   const response = apiContext.post(
     'https://restful-booker.herokuapp.com/booking',
     {
-      headers: { Cookie: `token = ${tokenValue}` },
-      data: { payload },
+      headers: {
+        'Content-Type': 'application/json',
+        Cookie: `token=${tokenValue}`
+      },
+      data: payload,
     }
   );
 
   return response;
 }
 
-export async function updateBook(
+export async function updateBooking(
   apiContext: APIRequestContext,
   tokenValue: string,
-  bookId: string,
-  payload: Book
+  bookingId: number,
+  payload: Booking
 ): Promise<APIResponse> {
   const response = apiContext.put(
-    `https://restful-booker.herokuapp.com/booking/${bookId}`,
+    `https://restful-booker.herokuapp.com/booking/${bookingId}`,
     {
-      headers: { Cookie: `token = ${tokenValue}` },
-      data: { payload },
+      headers: {
+        'Content-Type': 'application/json',
+        Cookie: `token=${tokenValue}`
+      },
+      data: payload,
     }
   );
 
   return response;
 }
 
-export async function updatePartialBook(
+export async function updatePartialBooking(
   apiContext: APIRequestContext,
   tokenValue: string,
-  bookId: string,
-  payload: Partial<Book>
+  bookingId: number,
+  payload: Partial<Booking>
 ): Promise<APIResponse> {
-  const response = apiContext.put(
-    `https://restful-booker.herokuapp.com/booking/${bookId}`,
+  const response = apiContext.patch(
+    `https://restful-booker.herokuapp.com/booking/${bookingId}`,
     {
-      headers: { Cookie: `token = ${tokenValue}` },
-      data: { payload },
+      headers: {
+        'Content-Type': 'application/json',
+        Cookie: `token=${tokenValue}`
+      },
+      data: payload,
     }
   );
 
   return response;
 }
 
-export async function deleteBook(
+export async function deleteBooking(
   apiContext: APIRequestContext,
   tokenValue: string,
-  bookId: string,
-  payload: Partial<Book>
+  bookingId: number
 ): Promise<APIResponse> {
   const response = apiContext.delete(
-    `https://restful-booker.herokuapp.com/booking/${bookId}`,
+    `https://restful-booker.herokuapp.com/booking/${bookingId}`,
     {
-      headers: { Cookie: `token = ${tokenValue}` },
-      data: { payload },
+      headers: {
+        Cookie: `token=${tokenValue}`
+      },
     }
   );
 

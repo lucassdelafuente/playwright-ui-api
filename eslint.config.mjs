@@ -16,7 +16,7 @@ const compat = new FlatCompat({
 
 export default [
   {
-    ignores: ['**/node_modules/', '**/playwright-report/', '**/test-results/'],
+    ignores: ['**/node_modules/', '**/playwright-report/', '**/test-results/', '**/*.mjs'],
   },
   ...compat.extends(
     'airbnb-base',
@@ -297,7 +297,7 @@ export default [
       'playwright/max-expects': [
         'error',
         {
-          max: 4,
+          max: 6,
         },
       ],
 

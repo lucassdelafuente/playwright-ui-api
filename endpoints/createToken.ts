@@ -16,7 +16,7 @@ export async function createToken(
   await expect(response).toBeOK();
 
   const responseJson: { token: string } = await response.json();
-  const token: string = responseJson.token;
+  const {token} = responseJson;
 
   return token;
 }
