@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { createBooking, deleteBooking, getBookingIds, getBooking, updateBooking, updatePartialBooking } from '@endpoints/books';
 import { createToken } from '@endpoints/createToken';
-import { Booking, BookingIdResponse, BookResponse } from '@types/books';
+import { Booking, BookingIdResponse, BookingResponse } from '@custom-types/books';
 
 test.describe('Resfull booker features', () => {
   let token: string;
@@ -57,7 +57,7 @@ test.describe('Resfull booker features', () => {
     // Create booking
     const responseCreateBooking = await createBooking(request, token, bookingData);
     await expect(responseCreateBooking).toBeOK();
-    const bookingJson: BookResponse = await responseCreateBooking.json();
+    const bookingJson: BookingResponse = await responseCreateBooking.json();
 
     // Get Specific Book
     const responseSpecificBook = await getBooking(request, bookingJson.bookingid);
@@ -79,7 +79,7 @@ test.describe('Resfull booker features', () => {
     const response = await createBooking(request, token, bookingData);
     await expect(response).toBeOK();
 
-    const bookingJson: BookResponse = await response.json();
+    const bookingJson: BookingResponse = await response.json();
     bookingId = bookingJson.bookingid;
     expect.soft(bookingJson.booking.firstname).toBe(bookingData.firstname);
     expect.soft(bookingJson.booking.lastname).toBe(bookingData.lastname);
@@ -96,7 +96,7 @@ test.describe('Resfull booker features', () => {
 
     // Check the response
     await expect(responseNewBook).toBeOK();
-    const bookingJson: BookResponse = await responseNewBook.json();
+    const bookingJson: BookingResponse = await responseNewBook.json();
 
     // Update the booking
     const responseUpdateBook = await updateBooking(request, token, bookingJson.bookingid, updatedBookingData);
@@ -122,7 +122,7 @@ test.describe('Resfull booker features', () => {
 
     // Check the response
     await expect(responseNewBook).toBeOK();
-    const bookingJson: BookResponse = await responseNewBook.json();
+    const bookingJson: BookingResponse = await responseNewBook.json();
 
     // Update the booking
     const responseUpdateBook = await updatePartialBooking(request, token, bookingJson.bookingid, updatedBookingFirstName);
@@ -142,7 +142,7 @@ test.describe('Resfull booker features', () => {
 
     // Check the response
     await expect(responseNewBook).toBeOK();
-    const bookingJson: BookResponse = await responseNewBook.json();
+    const bookingJson: BookingResponse = await responseNewBook.json();
 
     // Delete booking
     const resonseDelete = await deleteBooking(request, token, bookingJson.bookingid);

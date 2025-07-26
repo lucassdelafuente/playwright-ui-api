@@ -14,7 +14,7 @@ export type Booking = {
     additionalneeds: string;
 };
 
-export type BookResponse = {
+export type BookingResponse = {
     bookingid: number;
-    booking: Book
+    booking: Booking
 };

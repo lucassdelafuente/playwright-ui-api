@@ -1,4 +1,4 @@
-import { Booking } from '@types/books';
+import { Booking } from '@custom-types/books';
 import { APIRequestContext, APIResponse } from 'playwright';
 
 export async function getBookingIds(

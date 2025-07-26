@@ -17,7 +17,7 @@
       "@playwright.config": [
         "playwright.config.ts"
       ],
-      "@types/*": [
+      "@custom-types/*": [
         "types/*"
       ]
     },
