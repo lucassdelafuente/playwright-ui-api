@@ -33,9 +33,7 @@ export class BrokenImagesPage {
     const requests = await Promise.all(
       src.map(async (s) => {
         try {
-          const request = await this.page.request.get(
-            `/${s}`
-          );
+          const request = await this.page.request.get(`/${s}`);
 
           return request.status();
         } catch (error) {
