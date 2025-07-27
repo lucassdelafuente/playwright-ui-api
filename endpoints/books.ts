@@ -1,4 +1,4 @@
-import { Booking } from '@types/books';
+import { Booking } from '@custom-types/books';
 import { APIRequestContext, APIResponse } from 'playwright';
 
 export async function getBookingIds(
@@ -32,7 +32,7 @@ export async function createBooking(
     {
       headers: {
         'Content-Type': 'application/json',
-        Cookie: `token=${tokenValue}`
+        Cookie: `token=${tokenValue}`,
       },
       data: payload,
     }
@@ -52,7 +52,7 @@ export async function updateBooking(
     {
       headers: {
         'Content-Type': 'application/json',
-        Cookie: `token=${tokenValue}`
+        Cookie: `token=${tokenValue}`,
       },
       data: payload,
     }
@@ -72,7 +72,7 @@ export async function updatePartialBooking(
     {
       headers: {
         'Content-Type': 'application/json',
-        Cookie: `token=${tokenValue}`
+        Cookie: `token=${tokenValue}`,
       },
       data: payload,
     }
@@ -90,7 +90,7 @@ export async function deleteBooking(
     `https://restful-booker.herokuapp.com/booking/${bookingId}`,
     {
       headers: {
-        Cookie: `token=${tokenValue}`
+        Cookie: `token=${tokenValue}`,
       },
     }
   );

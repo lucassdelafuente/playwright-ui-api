@@ -22,7 +22,11 @@
     "mobile-chromium": "npx playwright test --project=chromium-mobile --config=playwright.config.ts",
     "mobile-webkit": "npx playwright test --project=webkit-mobile --config=playwright.config.ts",
     "format": "prettier --write .",
-    "lint": "eslint --fix ."
+    "format:check": "prettier --check .",
+    "lint": "eslint --fix .",
+    "lint:check": "eslint .",
+    "type-check": "tsc --noEmit",
+    "quality-check": "npm run format:check && npm run lint:check && npm run type-check"
   },
   "dependencies": {
     "@typescript-eslint/parser": "^8.24.0",
@@ -31,8 +35,8 @@
   },
   "lint-staged": {
     "**/*.{js,ts,tsx}": [
-      "prettier --write",
-      "eslint --fix"
+      "prettier --write --ignore-path .gitignore",
+      "eslint --fix --ignore-path .gitignore"
     ]
   }
 }

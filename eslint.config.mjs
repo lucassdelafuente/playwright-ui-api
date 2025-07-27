@@ -16,7 +16,12 @@ const compat = new FlatCompat({
 
 export default [
   {
-    ignores: ['**/node_modules/', '**/playwright-report/', '**/test-results/', '**/*.mjs'],
+    ignores: [
+      '**/node_modules/',
+      '**/playwright-report/',
+      '**/test-results/',
+      '**/*.mjs',
+    ],
   },
   ...compat.extends(
     'airbnb-base',
